@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         color::factory(10)->create();
         tamaño::factory(10)->create();
         producto::factory(10)->create();
-        lineapedido::factory(10)->create();
+        
        image::factory(10)->create();
       
     }
