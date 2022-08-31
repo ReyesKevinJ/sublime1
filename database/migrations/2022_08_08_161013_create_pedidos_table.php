@@ -16,6 +16,14 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('lineapedidos_id');
+            $table->unsignedBigInteger('users_id');
+            
+
+            //referencias 
+
+            $table->foreign('lineapedidos_id')->references('id')->on('lineapedidos');
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 
@@ -26,23 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
-            $table->id();
-            
-            $table->timestamps();
-
-
-
-
-            $table->unsignedBigInteger('lineapedidos_id');
-            $table->unsignedBigInteger('users_id');
-            
-
-            //referencias 
-
-            $table->foreign('lineapedidos_id')->references('id')->on('lineapedidos');
-            $table->foreign('users_id')->references('id')->on('users');
-
-        });
+        Schema::dropIfExists('pedidos');
     }
 };
