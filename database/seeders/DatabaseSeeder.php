@@ -25,8 +25,9 @@ class DatabaseSeeder extends Seeder
         color::factory(10)->create();
         tamaño::factory(10)->create();
         producto::factory(10)->create();
+        $this->call(lineapedidoSeeder::class); 
         
-       image::factory(10)->create();
+       
       
     }
 }
