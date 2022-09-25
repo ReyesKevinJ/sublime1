@@ -19,6 +19,7 @@ class ProductoFactory extends Factory
      */
     public function definition()
     {
+       
         $name = $this->faker->unique()->word(20);
         return [
             'nombre' => $name,

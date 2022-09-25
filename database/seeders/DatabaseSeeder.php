@@ -11,6 +11,7 @@ use App\Models\tamaño;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Storage::deleteDirectory('image');
+        Storage::makeDirectory('image');
         User::factory(10)->create();
         color::factory(10)->create();
         tamaño::factory(10)->create();

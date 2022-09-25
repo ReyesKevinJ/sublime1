@@ -18,18 +18,9 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('caracteristica');
             $table->integer('precio');
-          
             $table->timestamps();
-
-
-
-
-
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('tamaño_id');
-
-
-
 
             //referencias 
 

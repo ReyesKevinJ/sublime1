@@ -19,8 +19,8 @@ class LineapedidoFactory extends Factory
     public function definition()
     {
         return [
-            'cantidad' => $this -> faker -> numberBetween(1,100),
-            'producto_id' => producto::all() -> random()->id,
+           'cantidad' => $this -> faker ->numberBetween(1,100),
+           'producto_id'=> producto::all()->random()->id,
         ];
     }
 }
