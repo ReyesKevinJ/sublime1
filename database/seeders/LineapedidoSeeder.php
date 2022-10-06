@@ -17,9 +17,9 @@ class LineapedidoSeeder extends Seeder
      */
     public function run()
     {
-        $lineapedido= lineapedido::factory(10)->create();
+        $lineapedidos= lineapedido::factory(10)->create();
         //prueba
-        foreach ($lineapedido as $lineapedido){
+        foreach ($lineapedidos as $lineapedido){
            image::factory(1)->create([
             'imageable_id' => $lineapedido -> id,
             'imageable_type'=> lineapedido::class

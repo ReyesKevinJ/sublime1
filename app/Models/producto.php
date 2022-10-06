@@ -17,4 +17,8 @@ class producto extends Model
     public function lineapedida(){
         return $this->belongsTo(lineapedido::class);
     }
+    public function image(){
+        return $this->morphOne(image::class,'imageable');
+       }
+
 }
