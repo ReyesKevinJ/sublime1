@@ -8,7 +8,7 @@ use App\Models\producto;
 class PostController extends Controller
 {
     public function index(){
-        $posts= producto::all();
+        $posts= producto::get();
         return view('posts.index' ,compact('posts'));
     }
 }

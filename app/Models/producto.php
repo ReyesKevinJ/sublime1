@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class producto extends Model
 {
     use HasFactory;
+    protected $fillable=['nombre','caracteristica','precio','color','tamaño','image'];
     public function color(){
         return $this->belongsTo(color::class);
     }
@@ -16,5 +19,11 @@ class producto extends Model
     }
     public function lineapedida(){
         return $this->belongsTo(lineapedido::class);
+    }
+    public function producto(){
+        return $this->belongsTo(producto::class);
+    }
+    public function image(){
+        return $this->morphOne(image::class,'imageable');
     }
 }

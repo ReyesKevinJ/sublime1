@@ -9,6 +9,7 @@ use App\Models\pedido;
 use App\Models\producto;
 use App\Models\tamaño;
 use App\Models\User;
+use Database\Factories\pedidoFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -22,13 +23,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         Storage::deleteDirectory('image');
         Storage::makeDirectory('image');
+        image::create(
+            [
+                'url'=>'C:\xampp\htdocs\sublime1\resources\img\logo.jpeg',
+                'imageable_id' => '1',
+            'imageable_type'=> '1'
+            ]
+        ); 
         User::factory(10)->create();
         color::factory(10)->create();
         tamaño::factory(10)->create();
-        producto::factory(10)->create();
-        $this->call(lineapedidoSeeder::class); 
+        $this->call(ProductoSeeder::class);
+        $this->call(LineapedidoSeeder::class); 
+        pedido::factory(10)->create();
         
        
       
