@@ -42,12 +42,11 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre'=>'required',
+            'nombre'=>'required|unique:productos',
             'caracteristica'=>'required',
             'precio'=>'required',
-            'color_id'=>'',
-            'tamaño_id'=>''
-
+            'color_id'=>'required',
+            'tamaño_id'=>'required',
         ]);
         $producto= producto::create($request->all());
         return redirect()->route('admin.productos.index',$producto);
