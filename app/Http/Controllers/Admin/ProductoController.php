@@ -49,7 +49,7 @@ class ProductoController extends Controller
             'tamaño_id'=>'required',
         ]);
         $producto= producto::create($request->all());
-        return redirect()->route('admin.productos.index',$producto);
+        return redirect()->route('admin.productos.index',$producto)->with('success','El producto fue CARGADO');
     }
 
     /**
@@ -71,8 +71,10 @@ class ProductoController extends Controller
      */
     public function edit(producto $producto)
     {
+        $color= color::pluck('color','id');
+        $tamaño= tamaño::pluck('tamaño','id');
 
-        return view('admin.productos.edit', compact('producto') );
+        return view('admin.productos.edit', compact('producto','color','tamaño') );
     }
 
     /**
@@ -84,7 +86,15 @@ class ProductoController extends Controller
      */
     public function update(Request $request, producto $producto)
     {
-        //
+        $request->validate([
+            'nombre'=>'required|unique:productos',
+            'caracteristica'=>'required',
+            'precio'=>'required',
+            'color_id'=>'required',
+            'tamaño_id'=>'required',
+        ]);
+        $producto->update($request->all());
+        return redirect()->route('admin.productos.index')->with('info','El producto fue EDITADO');
     }
 
     /**
@@ -95,6 +105,7 @@ class ProductoController extends Controller
      */
     public function destroy(producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect()->route('admin.productos.index')->with('danger','El producto fue ELIMINADO');
     }
 }

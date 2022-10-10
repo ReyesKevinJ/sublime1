@@ -6,6 +6,21 @@
 @stop
 
 @section('content')
+    @if (session('info'))
+        <div class="alert alert-info" >
+            <strong>{{session('info')}}</strong>
+        </div>
+
+
+    @elseif (session('success'))
+        <div class="alert alert-primary">
+            <strong>{{session('success')}}</strong>
+        </div>
+    @elseif (session('danger'))
+        <div class="alert alert-danger">
+            <strong>{{session('danger')}}</strong>
+        </div>
+    @endif
     <div class="card">
 
             <div class="card-header">
@@ -37,7 +52,7 @@
                                 <form action="{{route('admin.productos.destroy',$producto)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger" >Eliminar</button>
+                                    <input type="submit" onclick="return confirm(¿Quiere Eliminar el Producto?)" class="btn btn-danger" value="Eliminar" >
                                 </form>
                             </td>
                         </tr>
@@ -50,8 +65,9 @@
 {{--
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+@stop--}}
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop --}}
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.js"></script>
+@stop

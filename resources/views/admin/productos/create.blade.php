@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-body">
 
-            {!! Form::open(['route'=>'admin.productos.store','autocomplet'=>'off','files'=>true]) !!}
+            {!! Form::open(['route'=>'admin.productos.store','autocomplet'=>'off','files'=>'true']) !!}
             {!! Form::hidden('user_id', auth()->user()->id) !!}
 
         <div class="form group">
@@ -36,21 +36,21 @@
         </div>
         <div class="form-group">
             {!! Form::label('color_id','Color') !!}
-            {!! Form::select('color_id', $color,null,['class'=>'mx-3 my-2 btn btn-outline-dark','placeholder'=>'Seleccionar Color']) !!}
+            {!! Form::select('color_id', $color,null,['placeholder'=>'Seleccionar Color']) !!}
             @error('color_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
         <div class="form-group">
             {!! Form::label('tamaño_id','Tamaño') !!}
-            {!! Form::select('tamaño_id', $tamaño,null,['class'=>'mx-3 my-2 btn btn-outline-dark','placeholder'=>'Seleccionar Tamaño']) !!}
+            {!! Form::select('tamaño_id', $tamaño,null,['placeholder'=>'Seleccionar Tamaño']) !!}
             @error('tamaño_id')
                 <span class="taxt-danger">{{$message}}</span>
             @enderror
         </div>
         {{-- <div class="form-group">
             {!! Form::label('image','Imagen') !!}
-            {!! Form::file('image',['class'=>'form-control-file','accept'=>'/image/**']) !!}
+            {!! Form::file('image',['accept'=>'image/*','class'=>'form-control-file']) !!}
             @error('image')
                 <span class="taxt-danger">{{$menssage}}</span>
             @enderror
