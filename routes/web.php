@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 
 
 Route::get('/', [PostController::class,'index'])->name('posts.index');
+Route::get('/prueba',[PostController::class,'show']);
 
 
 

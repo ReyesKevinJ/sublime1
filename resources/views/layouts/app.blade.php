@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" href="/img/logo3.png" >
+        <link rel="shortcut icon" href="/img/logo3.png">
         <title>{{ config('SublimeFire', 'SublimeFire') }}</title>
 
         <!-- Fonts -->
@@ -12,7 +12,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+
 
         <!-- Styles -->
         @livewireStyles
@@ -23,7 +23,7 @@
         <div class="min-h-screen bg-gray-100">
             @livewire('nav')
 
-         
+
 
             <!-- Page Content -->
             <main>
@@ -34,6 +34,6 @@
         @stack('modals')
 
         @livewireScripts
- 
+
     </body>
 </html>

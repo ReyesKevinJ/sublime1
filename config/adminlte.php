@@ -318,14 +318,16 @@ return [
         ],
         ['header' => 'ADMINISTRADOR'],
         [
-            'text' => 'Productos',
+            'text' => 'Lista de Productos',
             'route'  => 'admin.productos.index',
             'icon' => 'fas fa-boxes fa-fw',
+            'active'=>['admin/productos','admin/productos/*/edit']
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Cargar Producto',
+            'route'  => 'admin.productos.create',
+            'icon' => 'fas fa-truck-loading fa-fw',
+            'active'=>['admin/productos/create*']
         ],
         [
             'text'    => 'multilevel',
@@ -535,5 +537,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

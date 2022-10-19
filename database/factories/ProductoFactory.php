@@ -19,15 +19,16 @@ class ProductoFactory extends Factory
      */
     public function definition()
     {
-       
+
         $name = $this->faker->unique()->word(20);
         return [
             'nombre' => $name,
             'precio' => $this -> faker ->numberBetween($min = 1000, $max = 9000),
-            
+
             'color_id'=> color::all()->random()->id,
             'tamaño_id'=> tamaño::all() ->random()->id,
             'caracteristica' => $this -> faker ->text(200),
+            'descripcion' => $this -> faker ->text(400),
         ];
     }
 }

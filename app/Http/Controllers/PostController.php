@@ -11,4 +11,8 @@ class PostController extends Controller
         $posts= producto::all();
         return view('posts.index' ,compact('posts'));
     }
+    public function show(){
+
+        return view('posts.prueba');
+    }
 }

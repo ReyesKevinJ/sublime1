@@ -26,21 +26,14 @@ class DatabaseSeeder extends Seeder
 
         Storage::deleteDirectory('image');
         Storage::makeDirectory('image');
-        image::create(
-            [
-                'url'=>'C:\xampp\htdocs\sublime1\resources\img\logo.jpeg',
-                'imageable_id' => '1',
-            'imageable_type'=> '1'
-            ]
-        ); 
         User::factory(10)->create();
         color::factory(10)->create();
         tamaño::factory(10)->create();
         $this->call(ProductoSeeder::class);
-        $this->call(LineapedidoSeeder::class); 
+        $this->call(LineapedidoSeeder::class);
         pedido::factory(10)->create();
-        
-       
-      
+
+
+
     }
 }

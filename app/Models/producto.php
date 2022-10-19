@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class producto extends Model
 {
     use HasFactory;
-    protected $fillable=['nombre','caracteristica','precio','color_id','tamaño_id'];
+    protected $fillable=['nombre','caracteristica','precio','descripcion','color_id','tamaño_id'];
     public function color(){
         return $this->belongsTo(color::class);
     }

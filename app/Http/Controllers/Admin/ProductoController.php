@@ -7,14 +7,18 @@ use App\Models\color;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\tamaño;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
+    use WithPagination;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $productos= producto::all();
@@ -41,14 +45,23 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'nombre'=>'required|unique:productos',
             'caracteristica'=>'required',
             'precio'=>'required',
+            'descripcion'=>'required',
             'color_id'=>'required',
             'tamaño_id'=>'required',
         ]);
         $producto= producto::create($request->all());
+        if ($request->file('image')) {
+            $url= Storage::put('public/image',$request->file('image'));
+            $producto->image()->create([
+                'url'=>$url
+            ]);
+        }
         return redirect()->route('admin.productos.index',$producto)->with('success','El producto fue CARGADO');
     }
 
@@ -87,13 +100,21 @@ class ProductoController extends Controller
     public function update(Request $request, producto $producto)
     {
         $request->validate([
-            'nombre'=>'required|unique:productos',
+            'nombre'=>'required',
             'caracteristica'=>'required',
             'precio'=>'required',
+            'descripcion'=>'required',
             'color_id'=>'required',
             'tamaño_id'=>'required',
         ]);
         $producto->update($request->all());
+        if ($request->file('image')) {
+            $url= Storage::put('public/image',$request->file('image'));
+            Storage::delete($producto->image->url);
+            $producto->image()->create([
+                'url'=>$url
+            ]);
+        }
         return redirect()->route('admin.productos.index')->with('info','El producto fue EDITADO');
     }
 

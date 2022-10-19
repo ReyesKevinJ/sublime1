@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('caracteristica');
             $table->integer('precio');
+            $table->text('descripcion');
             $table->timestamps();
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('tamaño_id');
 
-            //referencias 
+            //referencias
 
             $table->foreign('color_id')->references('id')->on('colors');
             $table->foreign('tamaño_id')->references('id')->on('tamaños');
