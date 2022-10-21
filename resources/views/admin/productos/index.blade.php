@@ -47,6 +47,7 @@
                 </thead>
                 <tbody>
                     @foreach ($productos as $producto)
+
                         <tr>
                             <td class="text-center">{{$producto->id}} </td>
                             <td class="text-center">{{$producto->nombre}}</td>
@@ -56,11 +57,38 @@
                             <td class="text-center">{{$producto->descripcion}}</td>
                             <td class="text-center"><a class="btn btn-success" href="{{route('admin.productos.edit', $producto)}}">Editar</a></td>
                             <td class="text-center">
-                                <form action="{{route('admin.productos.destroy',$producto)}}" method="POST">
+                                <form action="{{route('admin.productos.destroy', $producto)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <input type="submit" onclick="return confirm(¿Quiere Eliminar el Producto?)" class=" text-white btn bg-red-800" value="Eliminar" >
+                                    <button type="submit" onclick="return confirm('¿Quiere Eliminar el Producto?')" class=" text-white btn bg-red-800">Eliminar</button>
                                 </form>
+                                <!-- Button trigger modal -->
+{{-- <button type="button" class="text-white btn bg-red-800" data-toggle="modal" data-target="#exampleModal">
+    Eliminar
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿SEGURO QUIERE ELIMINAR?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{route('admin.productos.destroy', $producto)}}" method="POST">
+            @csrf
+            @method('delete')
+            <button type="submit" onclick="return confirm('¿Quiere Eliminar el Producto?')" class=" text-white btn bg-red-800">Eliminar</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div> --}}
+
                             </td>
                         </tr>
                     @endforeach
@@ -98,6 +126,7 @@
 @stop--}}
 
 @section('js')
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/jquery/jquery.js"></script>
+
+    {{-- <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.js"></script> --}}
 @stop

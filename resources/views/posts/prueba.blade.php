@@ -30,5 +30,8 @@
             </span>
         </button>
     </div>
+    <button onclick="getElementById('demo').innerHTML=Date()">What is the time?</button>
+
+<p id="demo"></p>
     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 </x-app-layout>
