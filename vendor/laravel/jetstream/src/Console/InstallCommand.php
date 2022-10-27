@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use RuntimeException;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
@@ -34,10 +35,16 @@ class InstallCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int|null
      */
     public function handle()
     {
+        if (! in_array($this->argument('stack'), ['inertia', 'livewire'])) {
+            $this->components->error('Invalid stack. Supported stacks are [inertia] and [livewire].');
+
+            return 1;
+        }
+
         // Publish...
         $this->callSilent('vendor:publish', ['--tag' => 'jetstream-config', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'jetstream-migrations', '--force' => true]);
@@ -45,6 +52,9 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'fortify-config', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'fortify-support', '--force' => true]);
         $this->callSilent('vendor:publish', ['--tag' => 'fortify-migrations', '--force' => true]);
+
+        // Storage...
+        $this->callSilent('storage:link');
 
         // "Home" Route...
         $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
@@ -231,9 +241,10 @@ class InstallCommand extends Command
             $this->installLivewireTeamStack();
         }
 
+        $this->runCommands(['npm install', 'npm run build']);
+
         $this->line('');
         $this->components->info('Livewire scaffolding installed successfully.');
-        $this->components->warn('Please execute the [npm install && npm run dev] commands to build your assets.');
     }
 
     /**
@@ -293,7 +304,7 @@ EOF;
     protected function installInertiaStack()
     {
         // Install Inertia...
-        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.5.2', 'tightenco/ziggy:^1.0');
+        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.6.3', 'tightenco/ziggy:^1.0');
 
         // Install NPM packages...
         $this->updateNodePackages(function ($packages) {
@@ -327,7 +338,7 @@ EOF;
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Fortify'));
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Jetstream'));
         (new Filesystem)->ensureDirectoryExists(resource_path('css'));
-        (new Filesystem)->ensureDirectoryExists(resource_path('js/Jetstream'));
+        (new Filesystem)->ensureDirectoryExists(resource_path('js/Components'));
         (new Filesystem)->ensureDirectoryExists(resource_path('js/Layouts'));
         (new Filesystem)->ensureDirectoryExists(resource_path('js/Pages'));
         (new Filesystem)->ensureDirectoryExists(resource_path('js/Pages/API'));
@@ -355,6 +366,7 @@ EOF;
             });
 
         $this->installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
+        $this->installMiddlewareAfter('\App\Http\Middleware\HandleInertiaRequests::class', '\Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class');
 
         // Models...
         copy(__DIR__.'/../../stubs/app/Models/User.php', app_path('Models/User.php'));
@@ -380,7 +392,7 @@ EOF;
         copy(__DIR__.'/../../stubs/inertia/resources/js/Pages/TermsOfService.vue', resource_path('js/Pages/TermsOfService.vue'));
         copy(__DIR__.'/../../stubs/inertia/resources/js/Pages/Welcome.vue', resource_path('js/Pages/Welcome.vue'));
 
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Jetstream', resource_path('js/Jetstream'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Components', resource_path('js/Components'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Layouts', resource_path('js/Layouts'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Pages/API', resource_path('js/Pages/API'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Pages/Auth', resource_path('js/Pages/Auth'));
@@ -419,9 +431,10 @@ EOF;
             $this->installInertiaSsrStack();
         }
 
+        $this->runCommands(['npm install', 'npm run build']);
+
         $this->line('');
         $this->components->info('Inertia scaffolding installed successfully.');
-        $this->components->warn('Please execute the [npm install && npm run dev] commands to build your assets.');
     }
 
     /**
@@ -707,5 +720,28 @@ EOF;
     protected function phpBinary()
     {
         return (new PhpExecutableFinder())->find(false) ?: 'php';
+    }
+
+    /**
+     * Run the given commands.
+     *
+     * @param  array  $commands
+     * @return void
+     */
+    protected function runCommands($commands)
+    {
+        $process = Process::fromShellCommandline(implode(' && ', $commands), null, null, null, null);
+
+        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+            try {
+                $process->setTty(true);
+            } catch (RuntimeException $e) {
+                $this->output->writeln('  <bg=yellow;fg=black> WARN </> '.$e->getMessage().PHP_EOL);
+            }
+        }
+
+        $process->run(function ($type, $line) {
+            $this->output->write('    '.$line);
+        });
     }
 }

@@ -454,7 +454,7 @@ class Email extends Message
 
         $this->ensureBodyValid();
 
-        [$htmlPart, $attachmentParts, $inlineParts] = $this->prepareParts();
+        [$htmlPart, $otherParts, $relatedParts] = $this->prepareParts();
 
         $part = null === $this->text ? null : new TextPart($this->text, $this->textCharset);
         if (null !== $htmlPart) {
@@ -465,15 +465,15 @@ class Email extends Message
             }
         }
 
-        if ($inlineParts) {
-            $part = new RelatedPart($part, ...$inlineParts);
+        if ($relatedParts) {
+            $part = new RelatedPart($part, ...$relatedParts);
         }
 
-        if ($attachmentParts) {
+        if ($otherParts) {
             if ($part) {
-                $part = new MixedPart($part, ...$attachmentParts);
+                $part = new MixedPart($part, ...$otherParts);
             } else {
-                $part = new MixedPart(...$attachmentParts);
+                $part = new MixedPart(...$otherParts);
             }
         }
 
@@ -490,8 +490,8 @@ class Email extends Message
             $html = $htmlPart->getBody();
 
             $regexes = [
-                '<img\s+[^>]*src\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+))',
-                '<\w+\s+[^>]*background\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+))',
+                '<img\s+[^>]*src\s*=\s*(?:([\'"])cid:(.+?)\\1|cid:([^>\s]+))',
+                '<\w+\s+[^>]*background\s*=\s*(?:([\'"])cid:(.+?)\\1|cid:([^>\s]+))',
             ];
             $tmpMatches = [];
             foreach ($regexes as $regex) {
@@ -502,42 +502,44 @@ class Email extends Message
         }
 
         // usage of reflection is a temporary workaround for missing getters that will be added in 6.2
-        $dispositionRef = new \ReflectionProperty(TextPart::class, 'disposition');
-        $dispositionRef->setAccessible(true);
         $nameRef = new \ReflectionProperty(TextPart::class, 'name');
         $nameRef->setAccessible(true);
-        $attachmentParts = $inlineParts = [];
+        $otherParts = $relatedParts = [];
         foreach ($this->attachments as $attachment) {
             $part = $this->createDataPart($attachment);
             if (isset($attachment['part'])) {
                 $attachment['name'] = $nameRef->getValue($part);
             }
 
+            $related = false;
             foreach ($names as $name) {
                 if ($name !== $attachment['name']) {
                     continue;
                 }
-                if (isset($inlineParts[$name])) {
+                if (isset($relatedParts[$name])) {
                     continue 2;
                 }
                 $part->setDisposition('inline');
-                $html = str_replace('cid:'.$name, 'cid:'.$part->getContentId(), $html);
+                $html = str_replace('cid:'.$name, 'cid:'.$part->getContentId(), $html, $count);
+                if ($count) {
+                    $related = true;
+                }
                 $part->setName($part->getContentId());
 
                 break;
             }
 
-            if ('inline' === $dispositionRef->getValue($part)) {
-                $inlineParts[$attachment['name']] = $part;
+            if ($related) {
+                $relatedParts[$attachment['name']] = $part;
             } else {
-                $attachmentParts[] = $part;
+                $otherParts[] = $part;
             }
         }
         if (null !== $htmlPart) {
             $htmlPart = new TextPart($html, $this->htmlCharset, 'html');
         }
 
-        return [$htmlPart, $attachmentParts, array_values($inlineParts)];
+        return [$htmlPart, $otherParts, array_values($relatedParts)];
     }
 
     private function createDataPart(array $attachment): DataPart

@@ -102,6 +102,7 @@ class Builder implements BuilderContract
         'getBindings',
         'getConnection',
         'getGrammar',
+        'implode',
         'insert',
         'insertGetId',
         'insertOrIgnore',
@@ -109,6 +110,7 @@ class Builder implements BuilderContract
         'max',
         'min',
         'raw',
+        'rawValue',
         'sum',
         'toSql',
     ];
@@ -1026,6 +1028,29 @@ class Builder implements BuilderContract
             $uniqueBy,
             $this->addUpdatedAtToUpsertColumns($update)
         );
+    }
+
+    /**
+     * Update the column's update timestamp.
+     *
+     * @param  string|null  $column
+     * @return int|false
+     */
+    public function touch($column = null)
+    {
+        $time = $this->model->freshTimestamp();
+
+        if ($column) {
+            return $this->toBase()->update([$column => $time]);
+        }
+
+        $column = $this->model->getUpdatedAtColumn();
+
+        if (! $this->model->usesTimestamps() || is_null($column)) {
+            return false;
+        }
+
+        return $this->toBase()->update([$column => $time]);
     }
 
     /**

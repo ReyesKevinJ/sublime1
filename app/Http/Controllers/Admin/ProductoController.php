@@ -99,6 +99,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, producto $producto)
     {
+
         $request->validate([
             'nombre'=>'required',
             'caracteristica'=>'required',

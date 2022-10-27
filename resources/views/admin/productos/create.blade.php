@@ -40,15 +40,7 @@ $('#image').change(function(e){
 })
 
 });
-    // $(document).getElementById("image").addEventListener('change',cambiarImagen);
-    //     function cambiarImagen(event){
-    //         var image= event.target.files[0];
-    //         var reader= new FileReader();
-    //         reader.onload = (event) => {
-    //             document.getElementById("picture").setAttribute('src',evet.target.result);
-    //         };
-    //         reader.readAsDataURL(image);
-    //     }
+
 </script>
 @stop
 

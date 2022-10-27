@@ -22,14 +22,16 @@ use InvalidArgumentException;
  * @method \Illuminate\Routing\RouteRegistrar middleware(array|string|null $middleware)
  * @method \Illuminate\Routing\RouteRegistrar name(string $value)
  * @method \Illuminate\Routing\RouteRegistrar namespace(string|null $value)
- * @method \Illuminate\Routing\RouteRegistrar prefix(string  $prefix)
+ * @method \Illuminate\Routing\RouteRegistrar prefix(string $prefix)
  * @method \Illuminate\Routing\RouteRegistrar scopeBindings()
- * @method \Illuminate\Routing\RouteRegistrar where(array  $where)
- * @method \Illuminate\Routing\RouteRegistrar whereIn(array|string  $parameters, array  $values)
- * @method \Illuminate\Routing\RouteRegistrar withoutMiddleware(array|string  $middleware)
+ * @method \Illuminate\Routing\RouteRegistrar where(array $where)
+ * @method \Illuminate\Routing\RouteRegistrar withoutMiddleware(array|string $middleware)
+ * @method \Illuminate\Routing\RouteRegistrar withoutScopedBindings()
  */
 class RouteRegistrar
 {
+    use CreatesRegularExpressionRouteConstraints;
+
     /**
      * The router instance.
      *
@@ -68,7 +70,6 @@ class RouteRegistrar
         'prefix',
         'scopeBindings',
         'where',
-        'whereIn',
         'withoutMiddleware',
     ];
 
