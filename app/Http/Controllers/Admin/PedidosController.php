@@ -16,6 +16,7 @@ class PedidosController extends Controller
     {
         $pedidos= pedido::all();
         return view('admin.pedidos.index', compact('pedidos'));
+
     }
 
     /**
