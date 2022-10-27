@@ -19,10 +19,11 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('producto_id');
-           
+            $table->foreignId('pedido_id')->constrained();
+
 
             //referencia
-            $table->foreign('producto_id')->references('id')->on('productos'); 
+            $table->foreign('producto_id')->references('id')->on('productos');
 
 
         });

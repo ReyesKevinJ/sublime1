@@ -17,11 +17,8 @@ class producto extends Model
     public function tamaño (){
         return $this->belongsTo(tamaño::class);
     }
-    public function lineapedida(){
+    public function lineapedido(){
         return $this->belongsTo(lineapedido::class);
-    }
-    public function producto(){
-        return $this->belongsTo(producto::class);
     }
     public function image(){
         return $this->morphOne(image::class,'imageable');

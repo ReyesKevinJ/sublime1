@@ -17,6 +17,9 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    public function pedido(){
+        return $this->hasMany(pedido::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -58,7 +61,5 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function pedido (){
-        return $this->belongsTo(pedido::class);
-    }
+
 }

@@ -19,7 +19,7 @@ class pedidoFactory extends Factory
     public function definition()
     {
         return [
-            'lineapedidos_id'=> lineapedido::all()->random()->id,
+
             'users_id'=> User::all()->random()->id,
         ];
     }

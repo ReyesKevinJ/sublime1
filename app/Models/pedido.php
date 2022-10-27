@@ -10,15 +10,15 @@ class pedido extends Model
     use HasFactory;
        //relacion de uno a muchos (inversa)
 
-   
+
 
     public function lineapedido (){
         return $this->hasMany(lineapedido::class);
 
-    
+
     }
     public function user (){
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'users_id');
     }
-   
+
 }

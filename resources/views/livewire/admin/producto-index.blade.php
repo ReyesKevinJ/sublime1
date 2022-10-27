@@ -59,7 +59,7 @@
                                 <form action="{{route('admin.productos.destroy',$producto)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <input type="submit" onclick="return confirm(¿Quiere Eliminar el Producto?)" class=" text-white btn bg-red-800" value="Eliminar" >
+                                    <input type="submit" onclick="return confirm('¿Quiere Eliminar el Producto?')" class=" text-white btn bg-red-800" value="Eliminar" >
                                 </form>
                             </td>
                         </tr>

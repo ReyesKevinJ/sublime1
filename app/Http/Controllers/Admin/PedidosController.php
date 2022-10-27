@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\pedido;
+use App\Models\User;
+
 class PedidosController extends Controller
 {
     /**
@@ -46,9 +48,9 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(pedido $pedido)
     {
-        //
+        return view('admin.pedidos.show', compact('pedido'));
     }
 
     /**
@@ -57,7 +59,7 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(pedido $pedido)
     {
         //
     }
@@ -69,7 +71,7 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, pedido $pedido)
     {
         //
     }
@@ -80,7 +82,7 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(pedido $pedido)
     {
         //
     }
