@@ -1,11 +1,15 @@
 {
+  "public/img/4.jpeg": {
+    "file": "assets/4.2d170f35.jpeg",
+    "src": "public/img/4.jpeg"
+  },
   "resources/js/app.js": {
     "file": "assets/app.123e0070.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.85959247.css",
+    "file": "assets/app.03a574ae.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

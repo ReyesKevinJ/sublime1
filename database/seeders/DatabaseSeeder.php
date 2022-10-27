@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\category;
 use App\Models\color;
 use App\Models\image;
 use App\Models\lineapedido;
@@ -24,12 +25,12 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         color::factory(10)->create();
         tamaño::factory(10)->create();
-        
+        // image::factory(10)->create();
         
         $this->call(productoSeeder::class);
-        $this->call(lineapedidoSeeder::class);
-        pedido::factory(10)->create(); 
-        
+        // $this->call(LineapedidoSeeder::class);
+        pedido::factory(10)->hasLineapedido(10)->create(); 
+       
        
       
     }

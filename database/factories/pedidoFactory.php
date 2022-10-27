@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\lineapedido;
+use App\Models\producto;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,9 +19,11 @@ class pedidoFactory extends Factory
      */
     public function definition()
     {
+        $unixTimestamp = '1461067200'; 
         return [
-            'lineapedidos_id'=> lineapedido::all() ->random()->id,
+            
             'users_id'=> User::all() ->random()->id,
+            
         ];
     }
 }

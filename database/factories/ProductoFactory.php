@@ -27,6 +27,7 @@ class ProductoFactory extends Factory
             'color_id'=> color::all()->random()->id,
             'tamaño_id'=> tamaño::all() ->random()->id,
             'caracteristica' => $this -> faker ->text(200),
+            'descripcion'=>$this -> faker->text(600)
         ];
     }
 }

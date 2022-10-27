@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('producto_id');
+            $table->foreignId('pedido_id')->constrained();
            
 
             //referencia

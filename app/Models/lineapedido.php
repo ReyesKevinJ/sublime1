@@ -10,12 +10,12 @@ class lineapedido extends Model
     use HasFactory;
         //relacion uno a muchoas 
         public function pedido(){
-            return $this->belongsTo(lineapedido::class);
+            return $this->belongsTo(pedido::class, 'pedido_id');
         }
     
     
         public  function producto(){
-            return $this->hasMany(producto::class) ;
+            return $this->belongsTo(producto::class , 'producto_id') ;
        }
     
        public function image(){

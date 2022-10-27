@@ -24,14 +24,14 @@
 
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-gradient-to-b from-gray-800 to-white">
                 {{ $slot }}
             </main>
         </div>
         <div class="container">
             @yield('contenido')
         </div>
-
+        @livewire('footer')
         @stack('modals')
 
         @livewireScripts

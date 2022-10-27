@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('caracteristica');
             $table->integer('precio');
+            $table->text('descripcion');
           
             $table->timestamps();
 
@@ -27,6 +28,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('tamaño_id');
+         
 
 
 
@@ -35,6 +37,7 @@ return new class extends Migration
 
             $table->foreign('color_id')->references('id')->on('colors');
             $table->foreign('tamaño_id')->references('id')->on('tamaños');
+           
         });
     }
 
