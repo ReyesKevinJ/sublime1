@@ -330,6 +330,12 @@ return [
             'active'=>['admin/productos/create*']
         ],
         [
+            'text' => 'Pedidos a Realizar',
+            'route'  => 'admin.pedidos.index',
+            'icon' => 'fas fa-paint-roller fa-fw',
+            'active'=>['admin/productos/create*']
+        ],
+        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
