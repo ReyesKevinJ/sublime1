@@ -6,11 +6,12 @@
 @stop
 
 @section('content')
+    <div class="p-2 m-2">
+        <a href="{{route('admin.pedidos.index' )}}" class="text-2xl"><i class="fas fa-caret-left pr-40"></i></a>
+    </div>
     <div class="card">
         <div class="card-header text-center">
-
-
-                <h3 class="text-2xl"><a href="{{route('admin.pedidos.index' )}}" class=""><i class="fas fa-caret-left"></i></a>Pedido Realizado por {{$pedido->user->name}}</h3>
+            <h3 class="text-2xl">Pedido Realizado por {{$pedido->user->name}}</h3>
 
         </div>
         <div class="card-body">

@@ -41,6 +41,7 @@
                         <th class="text-center bg-amber-200">Color</th>
                         <th class="text-center bg-amber-200">Tamaño</th>
                         <th class="text-center bg-amber-200">Descripción</th>
+                        <th class="text-center bg-amber-200">Precio</th>
                         <th class="text-center bg-amber-200" colspan="2">Acciones</th>
                     </tr>
                 </thead>
@@ -54,6 +55,7 @@
                             <td class="text-center">{{$producto->color->color}}</td>
                             <td class="text-center">{{$producto->tamaño->tamaño}}</td>
                             <td class="text-center">{{$producto->descripcion}}</td>
+                            <td class="text-center">{{$producto->precio}}</td>
                             <td class="text-center"><a class="btn btn-success" href="{{route('admin.productos.edit', $producto)}}">Editar</a></td>
                             <td class="text-center">
                                 <form action="{{route('admin.productos.destroy',$producto)}}" method="POST">

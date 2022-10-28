@@ -84,6 +84,7 @@ class PedidosController extends Controller
      */
     public function destroy(pedido $pedido)
     {
-        //
+        $pedido->delete();
+        return redirect()->route('admin.pedidos.index')->with('danger','El pedido fue FINALIZADO');
     }
 }

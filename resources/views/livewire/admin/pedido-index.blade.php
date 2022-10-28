@@ -1,5 +1,9 @@
 <div>
-
+    @if (session('danger'))
+    <div class="alert alert-success" role="alert" >
+    <strong>{{session('danger')}}</strong>
+    </div>
+    @endif
 <div class="card">
 
     <div class="card-header">
