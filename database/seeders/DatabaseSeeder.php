@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
 
         Storage::deleteDirectory('image');
         Storage::makeDirectory('image');
-        User::factory(10)->create();
+        $this->call(RolesSeeder::class);
+        $this->call(UserSeeder::class);
         color::factory(10)->create();
         tamaño::factory(10)->create();
         $this->call(ProductoSeeder::class);

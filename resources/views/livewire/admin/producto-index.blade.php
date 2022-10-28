@@ -72,7 +72,7 @@
         </div>
 
         <div class="card-footer">
-            {{$productos->links()}}
+            {{$pedidos->links()}}
         </div>
 
     </div>
