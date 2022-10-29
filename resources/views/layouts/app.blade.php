@@ -29,8 +29,8 @@
             <main>
                 {{ $slot }}
             </main>
-            @livewire('footer')
         </div>
+        @livewire('footer')
 
         @stack('modals')
 
