@@ -55,7 +55,7 @@
                             <td class="text-center">{{$producto->color->color}}</td>
                             <td class="text-center">{{$producto->tamaño->tamaño}}</td>
                             <td class="text-center">{{$producto->descripcion}}</td>
-                            <td class="text-center">{{$producto->precio}}</td>
+                            <td class="text-center">${{$producto->precio}}</td>
                             <td class="text-center"><a class="btn btn-success" href="{{route('admin.productos.edit', $producto)}}">Editar</a></td>
                             <td class="text-center">
                                 <form action="{{route('admin.productos.destroy',$producto)}}" method="POST">
@@ -72,7 +72,7 @@
         </div>
 
         <div class="card-footer">
-            {{$pedidos->links()}}
+            {{$productos->links()}}
         </div>
 
     </div>

@@ -36,7 +36,9 @@
                 @endforeach
             </tbody>
         </table>
-
+    </div>
+    <div class="card-footer">
+        {{$pedidos->links()}}
     </div>
 
 </div>

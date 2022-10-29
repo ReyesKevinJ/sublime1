@@ -34,5 +34,8 @@ class RolesSeeder extends Seeder
         Permission::create(['name'=>'admin.pedidos.index'])->assignRole($role1);
         Permission::create(['name'=>'admin.pedidos.show'])->assignRole($role1);
         Permission::create(['name'=>'admin.pedidos.destroy'])->assignRole($role1);
+        Permission::create(['name'=>'admin.users.index'])->assignRole($role1);
+        Permission::create(['name'=>'admin.users.update'])->assignRole($role1);
+        Permission::create(['name'=>'admin.users.edit'])->assignRole($role1);
     }
 }

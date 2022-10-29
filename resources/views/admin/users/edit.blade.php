@@ -18,12 +18,12 @@
                 @foreach ($roles as $role)
                     <div>
                         <label>
-                            {!! Form::checkbox('roles[]', $role, null, ['class'=>'m-1']) !!}
+                            {!! Form::checkbox('roles[]', $role->id, null, ['class'=>'m-1']) !!}
                             {{$role->name}}
                         </label>
                     </div>
                 @endforeach
-
+                    {!! Form::submit('Asignar Rol', ['class'=>'btn btn-primary bg-blue mt-4']) !!}
             {!! Form::close() !!}
         </div>
     </div>
