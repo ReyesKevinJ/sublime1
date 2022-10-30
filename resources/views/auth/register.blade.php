@@ -1,10 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img class="rounded-full w-full h-40" src="/img/logo2.png" alt="">
+            <img class="rounded-full w-full h-40" src={{url('/img/logo2.png')}} alt="">
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mb-4"/>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf

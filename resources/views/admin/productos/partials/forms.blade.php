@@ -50,9 +50,9 @@
 
         <div class="row text-center mb-5">
             @isset($producto->image)
-            <img id="picture" src="{{Storage::url($producto->image->url)}}" alt="">
+            <img id="picture" src={{Storage::url($producto->image->url)}} alt="">
             @else
-            <img id="picture" class="img-fluid" src="/img/logo2.png" alt="">
+            <img id="picture" class="img-fluid" src={{url('/img/logo2.png')}} alt="">
             @endisset
         </div>
 

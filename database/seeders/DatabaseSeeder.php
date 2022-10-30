@@ -13,6 +13,7 @@ use Database\Factories\pedidoFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Database\Seeders\ProductoSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,8 +32,8 @@ class DatabaseSeeder extends Seeder
         color::factory(10)->create();
         tamaño::factory(10)->create();
         $this->call(ProductoSeeder::class);
-        // $this->call(LineapedidoSeeder::class);
-        pedido::factory(10)->hasLineapedido(4)->create();
+        pedido::factory(10)->hasLineapedido(10)->create();
+
 
 
 

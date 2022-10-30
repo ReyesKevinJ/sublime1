@@ -18,7 +18,7 @@ class pedido extends Model
 
     }
     public function user (){
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->hasMany(User::class, 'users_id');
     }
 
 }
