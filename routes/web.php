@@ -6,9 +6,12 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PedidoController;
 
 
-Route::get('/', [PostController::class,'index'])->name('posts.index');
-Route::get('/prueba',[PostController::class,'show']);
-Route::resource('pedidos',PedidoController::class)->names('pedidos');
+Route::get('/', [PostController::class, 'welcome']
+);
+Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index');
+Route::get('pedidos/{pedido}',[PedidoController::class ,'show'])->name('pedidos.show');
+Route::get('/productos', [PostController::class, 'index'])->name('productos.index');
+Route::get('productos/{producto}',[PostController::class ,'show'])->name('productos.show');
 
 
 
@@ -17,7 +20,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index');
 });

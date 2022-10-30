@@ -12,13 +12,13 @@ class pedido extends Model
 
 
 
-    public function lineapedido (){
+    public function lineapedidos (){
         return $this->hasMany(lineapedido::class);
 
 
     }
     public function user (){
-        return $this->hasMany(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 
 }

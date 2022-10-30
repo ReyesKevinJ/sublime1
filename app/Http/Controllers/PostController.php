@@ -8,11 +8,16 @@ use App\Models\producto;
 class PostController extends Controller
 {
     public function index(){
-        $posts= producto::all();
-        return view('posts.index' ,compact('posts'));
+        $productos = producto::paginate(6);
+        return view('posts.index', compact('productos'));
     }
-    public function show(){
+    public function show(producto $producto){
+        return view('posts.show' ,compact('producto') );
+    }
 
-        return view('posts.prueba');
+    public function welcome(){
+        $productos = producto::latest('id')->paginate(3);
+
+        return view('welcome', compact('productos'));
     }
 }

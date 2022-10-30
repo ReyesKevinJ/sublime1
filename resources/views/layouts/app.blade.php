@@ -26,7 +26,7 @@
 
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-gradient-to-b from-gray-800 to-white">
                 {{ $slot }}
             </main>
         </div>
