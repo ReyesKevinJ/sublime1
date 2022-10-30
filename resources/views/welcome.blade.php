@@ -49,7 +49,7 @@
 <h2  class="italic m-5 py-5 text-xl" style="text-align:center">Nosotros</h2>
 
 <section
-  class="relative bg-[url('C:\xampp\htdocs\sublime1\public\img\4.jpeg')] bg-cover bg-center bg-no-repeat"
+  class="relative bg-[url('C:\xampp\htdocs\sublime1\public\img\baner.jpeg')] bg-cover bg-center bg-no-repeat"
 >
   <div
     class="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:to-white/25"
@@ -107,7 +107,7 @@
                {{$producto->nombre}}
            </div>
            <h2 class="text-3xl leading-7 fond-bold">
-                           {{$producto->precio}}
+                           ${{$producto->precio}}
            </h2>
        </div>
    

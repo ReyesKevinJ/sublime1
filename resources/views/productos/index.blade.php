@@ -14,7 +14,7 @@
                 {{$producto->nombre}}
             </div>
             <h2 class="text-3xl leading-7 fond-bold">
-                            {{$producto->precio}}
+                           $ {{$producto->precio}}
             </h2>
         </div>
     
