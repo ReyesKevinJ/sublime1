@@ -695,7 +695,7 @@ class Vite implements Htmlable
     protected function chunk($manifest, $file)
     {
         if (! isset($manifest[$file])) {
-            throw new Exception("Unable to locate file in Vite manifest: {$file}");
+            throw new Exception("Unable to locate file in Vite manifest: {$file}.");
         }
 
         return $manifest[$file];

@@ -311,11 +311,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'Dashboard',
-            'route'         => 'admin.home',
-            'icon'        => 'fas fa-tachometer-alt fa-fw',
-        ],
+
         [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
