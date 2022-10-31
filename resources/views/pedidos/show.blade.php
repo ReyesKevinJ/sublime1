@@ -105,7 +105,7 @@
                                     <tr class="text-white bg-gray-800">
                                         <th colspan="3"></th>
                                         <td class="text-sm font-bold"><b>Total</b></td>
-                                        <td class="text-sm font-bold"><b><?php echo "$total2" ?></b></td>
+                                        <td class="text-sm font-bold"><b>$ <?php echo "$total2" ?></b></td>
 
                                     </tr>
                                 </tbody>
