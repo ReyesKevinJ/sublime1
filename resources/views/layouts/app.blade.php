@@ -20,13 +20,14 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100" x-data="{cart:false}">
             @livewire('nav')
 
 
 
             <!-- Page Content -->
             <main class="bg-gradient-to-b from-gray-800 to-white">
+                @livewire('carrito-index')
                 {{ $slot }}
             </main>
         </div>
