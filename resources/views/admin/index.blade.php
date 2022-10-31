@@ -2,11 +2,11 @@
 @section('title', 'SublimeFire-Admin')
 
 @section('content_header')
-    <h1>Menu </h1>
+    <h1>Panel de Administrador</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Bienvenido, este psnel te permitira administrar tu sistema.</p>
 @stop
 
 @section('css')

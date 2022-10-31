@@ -7,9 +7,8 @@
       "assets/app.40ebb89f.css"
     ]
   },
-  "resources/css/app.css": {
+  "resources/js/app.css": {
     "file": "assets/app.40ebb89f.css",
-    "src": "resources/css/app.css",
-    "isEntry": true
+    "src": "resources/js/app.css"
   }
 }
