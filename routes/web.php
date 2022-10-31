@@ -14,6 +14,7 @@ Route::get('pedidos/{pedido}',[PedidoController::class ,'show'])->name('pedidos.
 Route::get('/productos', [PostController::class, 'index'])->name('productos.index');
 Route::get('productos/{producto}',[PostController::class ,'show'])->name('productos.show');
 Route::get('/agregarproducto', [CarritoController::class, 'agregarItem'])->name('agregaritem');
+Route::get('/incrmentar/{id}', [CarritoController::class, 'incrmentQty'])->name('incrmentqty');
 
 
 

@@ -21,7 +21,11 @@
 
                         </div>
                         <div class="inline-block align-bottom">
-                            <button class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> PEDIR</button>
+                            <form action="{{route('agregaritem')}}">
+                                @csrf
+                                <input type="hidden" name="producto_id" value="{{$producto->id}}" id="">
+                                <input type="submit" class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold" value="PEDIR"><i class="mdi mdi-cart -ml-2 mr-2"></i>
+                            </form>
 
                         </div>
 

@@ -12,7 +12,7 @@ class producto extends Model
     use HasFactory;
     protected $fillable=['nombre','caracteristica','precio','descripcion','color_id','tamaño_id'];
     public function color(){
-        return $this->belongsTo(color::class);
+        return $this->belongsTo(color::class,'color_id');
     }
     public function tamaño (){
         return $this->belongsTo(tamaño::class);
