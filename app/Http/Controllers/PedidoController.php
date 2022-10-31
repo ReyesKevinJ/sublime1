@@ -10,7 +10,7 @@ use App\Models\lineapedido;
 class PedidoController extends Controller
 {
     public function index(){
-        $pedidos=pedido::all();
+        $pedidos=pedido::paginate()->where('users_id', auth()->user()->id);
 
 
         return view('pedidos.index', compact('pedidos'));

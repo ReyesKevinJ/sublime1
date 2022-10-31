@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pedido->lineapedido as $pedidos)
+                    @foreach ($pedido->lineapedidos as $pedidos)
                         <tr>
                             <td class="text-center">
                                 {{$pedidos->created_at}}
