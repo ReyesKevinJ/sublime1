@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         color::factory(10)->create();
         tamaño::factory(10)->create();
         $this->call(ProductoSeeder::class);
-        pedido::factory(10)->hasLineapedido(10)->create();
+        pedido::factory(10)->hasLineapedidos(10)->create();
 
 
 
