@@ -9,6 +9,7 @@ class lineapedido extends Model
 {
     use HasFactory;
         //relacion uno a muchoas
+        protected $fillable=['cantidad','producto_id','pedido_id'];
         public function pedido(){
             return $this->belongsTo(pedido::class, 'pedido_id');
         }

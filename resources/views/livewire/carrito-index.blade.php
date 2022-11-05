@@ -46,7 +46,11 @@
                         <ul role="list" class="-my-6 divide-y divide-gray-200">
                             @foreach (Cart::content() as $item)
                             <li class="flex py-6">
-
+                            <div class=" btn-group btn-group-sm" role="group" aria-label="Small button group">
+                            <a href="/decrementar/{{$item->rowId}}" class="btn btn-success">-</a>
+                            <button type="button" class=" btn">{{$item->qty}}</button>
+                            <a href="/incrmentar/{{$item->rowId}}" class="btn btn-success">+</a>
+                        </div>
 
                                 <div class="ml-4 flex flex-1 flex-col">
                                   <div>
@@ -56,13 +60,14 @@
                                       </h3>
                                       <p class="ml-4">$ {{number_format($item->price)}}</p>
                                     </div>
+                                    
 
                                   </div>
                                   <div class="flex flex-1 items-end justify-between text-sm">
-                                    <p class="text-gray-500">{{$item->qty}}</p>
+                                    <!-- <p class="text-gray-500">{{$item->qty}}</p> -->
 
                                     <div class="flex">
-                                      <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                      <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500"><a href="/eliminar/{{$item->rowId}}">remover</a></button>
                                     </div>
                                   </div>
                                 </div>
@@ -82,10 +87,22 @@
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div class="mt-6">
-                      <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
+                      @auth
+
+                               <a href="{{route('ConfirmarCarrito')}}" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">procesar pedido</a>
+                               
+                      @else
+                              
+                        
+                                <a href="/login" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">resgistrarte
+
+                                </a>
+                      @endauth
+                 
                     </div>
                     <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                       <p>
+                        <a href="{{route('eliminarCarrito')}}" class="font-medium text-indigo-600 hover:text-indigo-500">eliminar carrito</a>
                         or
                         <a href={{route('productos.index')}} class="font-medium text-indigo-600 hover:text-indigo-500">
                           Continue Shopping

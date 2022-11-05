@@ -30,8 +30,8 @@
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <a href="/" class="flex flex-shrink-0 items-center">
-            <img class="block h-8 w-auto lg:hidden" src={{url('/img/logo2.png')}} alt="Your Company">
-            <img class="hidden h-8 w-auto lg:block" src={{url('/img/logo2.png')}} alt="Your Company">
+            <img class="block h-8 w-auto lg:hidden" src={{url('/img/logo3.png')}} alt="Your Company">
+            <img class="hidden h-8 w-auto lg:block" src={{url('/img/logo3.png')}} alt="Your Company">
           </a>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        @auth
+        
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
 
@@ -58,7 +58,7 @@
                     </svg>
                 </button>
 
-
+                @auth
             <!-- Profile dropdown -->
             <div class="relative ml-3" x-data="{ open: false }" >
                 <div>

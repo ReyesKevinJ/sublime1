@@ -10,9 +10,9 @@ class pedido extends Model
     use HasFactory;
        //relacion de uno a muchos (inversa)
 
+    protected $fillable=['users_id'];
 
-
-    public function lineapedidos (){
+    public function lineapedido (){
         return $this->hasMany(lineapedido::class);
 
 
