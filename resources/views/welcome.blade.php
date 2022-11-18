@@ -62,16 +62,15 @@
           >
             <div class="max-w-xl text-center sm:text-left">
               <h1 class="text-3xl font-extrabold sm:text-5xl">
-                Let us find your
+               Sublime
 
                 <strong class="block font-extrabold text-rose-700">
-                  Forever Home.
+                Fire
                 </strong>
               </h1>
 
               <p class="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-                tenetur fuga ducimus numquam ea!
+              Si puedes soñarlo puedes personalizarlo.
               </p>
 
 

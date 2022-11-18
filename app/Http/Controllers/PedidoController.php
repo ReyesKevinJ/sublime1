@@ -12,7 +12,7 @@ class PedidoController extends Controller
     public function index(){
         $pedidos=pedido::paginate()->where('users_id', auth()->user()->id);
 
-
+        // $pedidos=pedido::all();
         return view('pedidos.index', compact('pedidos'));
     }
     public function show(pedido $pedido){

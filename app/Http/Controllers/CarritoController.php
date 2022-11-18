@@ -45,19 +45,22 @@ class CarritoController extends Controller
         Cart::destroy();
         return back();
     }
-    public function ConfirmarCarrito(Request $item){
+    public function ConfirmarCarrito(){
         $pedido = pedido::create ([
 
             'users_id'=> auth()->user()->id,
 
         ]);
-        foreach ($item as $items) {
-            $lineapedido=lineapedido::create([
-                'cantidad'=>$items->qty,
-                'producto_id'=>$items->id,
-                'pedido_id'=>$pedido->id
-            ]);
-        };
+        foreach (Cart::content() as $item) {
+                $lineapedido= new lineapedido();
+                $lineapedido->cantidad = $item->qty;
+                $lineapedido->producto_id = $item->id;
+                $lineapedido->pedido_id = $pedido->id;
+                $lineapedido-> save();
+        }
+        Cart::destroy();
+        return redirect()->back();
+        
 
     }
     

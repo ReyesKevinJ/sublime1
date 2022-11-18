@@ -74,7 +74,7 @@
                                 </thead>
                                 <tbody class="bg-white">
                                 <?php $total2=0; ?>
-                                @foreach ($pedido->lineapedidos as $lineapedido)
+                                @foreach ($pedido->lineapedido as $lineapedido)
                                     <tr class="whitespace-nowrap">
                                         <td class="px-6 py-4 text-sm text-gray-500">
                                                 <p>{{$lineapedido->producto->id}}</p>

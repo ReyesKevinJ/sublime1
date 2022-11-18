@@ -8,14 +8,14 @@
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app.62094255.css"
+      "assets/app.e1a5d197.css"
     ],
     "assets": [
       "assets/baner.a24ed6ed.jpeg"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app.62094255.css",
+    "file": "assets/app.e1a5d197.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
