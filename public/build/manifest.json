@@ -4,18 +4,18 @@
     "src": "public/img/baner.jpeg"
   },
   "resources/js/app.js": {
-    "file": "assets/app.4d1af1b2.js",
+    "file": "assets/app.ce4f498b.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app.e1a5d197.css"
+      "assets/app.ff78e385.css"
     ],
     "assets": [
       "assets/baner.a24ed6ed.jpeg"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app.e1a5d197.css",
+    "file": "assets/app.ff78e385.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

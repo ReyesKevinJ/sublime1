@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('users_id')->onDelete('cascade');
 
 
             //referencias

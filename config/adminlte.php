@@ -336,6 +336,18 @@ return [
             'icon' => 'fas fa-paint-roller fa-fw',
             'active'=>['admin/pedidos','admin/pedidos/*']
         ],
+        [
+            'text' => 'Colores',
+            'route'  => 'admin.colores.index',
+            'icon' => 'fas fa-palette fa-fw',
+            'active'=>['admin/colores','admin/colores/*']
+        ],
+        [
+            'text' => 'Tamaños',
+            'route'  => 'admin.tamaños.index',
+            'icon' => 'fas fa-ruler-combined fa-fw',
+            'active'=>['admin/tamaños','admin/tamaños/*']
+        ],
 
     ],
 

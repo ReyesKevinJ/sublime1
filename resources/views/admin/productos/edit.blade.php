@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-body">
 
-        {!! Form::model($producto,['route'=>['admin.productos.update', $producto],'method'=>'put' ,'autocomplet'=>'off','files'=>'true']) !!}
+        {!! Form::model($producto,['route'=>['admin.productos.update', $producto],'method'=>'put' ,'autocomplete'=>'off','files'=>'true']) !!}
         {!! Form::hidden('user_id', auth()->user()->id) !!}
         @include('admin.productos.partials.forms')
         {!! Form::close() !!}

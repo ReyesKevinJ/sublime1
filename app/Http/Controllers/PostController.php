@@ -16,7 +16,7 @@ class PostController extends Controller
     }
 
     public function welcome(){
-        $productos = producto::latest('id')->paginate(3);
+        $productos = producto::latest('id')->paginate(4);
 
         return view('welcome', compact('productos'));
     }

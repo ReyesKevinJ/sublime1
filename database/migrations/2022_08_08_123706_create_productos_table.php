@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('precio');
             $table->text('descripcion');
             $table->timestamps();
-            $table->unsignedBigInteger('color_id');
-            $table->unsignedBigInteger('tamaño_id');
+            $table->unsignedBigInteger('color_id')->onDelete('cascade');
+            $table->unsignedBigInteger('tamaño_id')->onDelete('cascade');
 
             //referencias
 
