@@ -91,7 +91,7 @@
                     <div class="group relative bg-white rounded-md">
                         <a href="{{route('productos.show' , $producto)}}">
                       <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-t-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                        <img src="{{url($producto->image->url)}}" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        <img src="{{Storage::url($producto->image->url)}}" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
                       </div>
                       <div class="mt-4 flex justify-between rounded-b-md shadow-lg px-6 py-4">
                         <div>

@@ -10,6 +10,9 @@ class PedidoIndex extends Component
 {
     use WithPagination;
     public $search;
+    public function updatingSearch(){
+        $this->resetPage();
+    }
     public function render()
     {
         $pedidos= pedido::where('id','>',0)->where('created_at','LIKE','%'. $this->search.'%')->paginate();
