@@ -60,7 +60,7 @@
                                       </h3>
                                       <p class="ml-4">$ {{number_format($item->price)}}</p>
                                     </div>
-                                    
+
 
                                   </div>
                                   <div class="flex flex-1 items-end justify-between text-sm">
@@ -88,17 +88,25 @@
                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div class="mt-6">
                       @auth
+                            @if (Cart::subtotal()!=0)
 
-                               <a href="{{route('ConfirmarCarrito')}}" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">procesar pedido</a>
-                               
+                            <a href="{{route('ConfirmarCarrito')}}" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">procesar pedido</a>
+
+
+                            @else
+                            <a href="{{route('productos.index')}}" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Hacer un pedido</a>
+
+
+                            @endif
+
                       @else
-                              
-                        
+
+
                                 <a href="/login" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">resgistrarte
 
                                 </a>
                       @endauth
-                 
+
                     </div>
                     <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                       <p>
