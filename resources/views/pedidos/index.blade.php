@@ -14,6 +14,9 @@
 
       </div>
       @endforeach
+      <div>
+        {{$pedidos->links()}}
+      </div>
     </div>
 
 

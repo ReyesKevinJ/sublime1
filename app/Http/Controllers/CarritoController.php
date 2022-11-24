@@ -6,6 +6,7 @@ use App\Models\lineapedido;
 use App\Models\pedido;
 use Illuminate\Http\Request;
 use App\Models\producto;
+
 use Cart;
 
 class CarritoController extends Controller
@@ -57,6 +58,7 @@ class CarritoController extends Controller
                 $lineapedido->producto_id = $item->id;
                 $lineapedido->pedido_id = $pedido->id;
                 $lineapedido-> save();
+               
         }
         Cart::destroy();
         return redirect()->back();

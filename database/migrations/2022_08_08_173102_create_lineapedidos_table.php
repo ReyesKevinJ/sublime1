@@ -19,11 +19,12 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('producto_id');
-            $table->foreignId('pedido_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('pedido_id');
 
 
             //referencia
-            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
+            $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');
 
 
         });

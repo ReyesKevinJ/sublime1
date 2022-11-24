@@ -90,9 +90,9 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(color $color)
+    public function destroy(color $colore)
     {
-        $color->delete();
+        $colore->delete();
         return redirect()->route('admin.colores.index')->with('danger','El color fue ELIMINADO');
     }
 }

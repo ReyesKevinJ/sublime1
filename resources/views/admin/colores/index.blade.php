@@ -46,14 +46,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($colores as $color)
+                    @foreach ($colores as $colore)
 
                         <tr>
-                            <td class="text-center">{{$color->id}} </td>
-                            <td class="text-center">{{$color->color}}</td>
-                            <td class="text-center"><a class="btn btn-success" href="{{route('admin.colores.edit', $color)}}">Editar</a></td>
+                            <td class="text-center">{{$colore->id}} </td>
+                            <td class="text-center">{{$colore->color}}</td>
+                            <td class="text-center"><a class="btn btn-success" href="{{route('admin.colores.edit', $colore)}}">Editar</a></td>
                             <td class="text-center">
-                                <form action="{{route('admin.colores.destroy',$color)}}" method="POST">
+                                <form action="{{route('admin.colores.destroy',$colore)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <input type="submit" onclick="return confirm('¿Quiere Eliminar el Color?')" class=" text-white btn bg-red-800" value="Eliminar" >

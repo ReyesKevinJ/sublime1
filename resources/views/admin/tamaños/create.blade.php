@@ -9,7 +9,7 @@
     <div class="card">
         <div class="card-body">
 
-            {!! Form::open(['route'=>'admin.tamaños.store','autocomplet'=>'off']) !!}
+            {!! Form::open(['route'=>'admin.tamaños.store','autocomplete'=>'off']) !!}
             {!! Form::hidden('user_id', auth()->user()->id) !!}
             <div class="form group">
                 {!! Form::label('tamaño', 'Tamaño') !!}

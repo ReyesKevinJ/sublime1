@@ -9,10 +9,10 @@
     <div class="card">
         <div class="card-body">
 
-            {!! Form::open(['route'=>'admin.colores.store','autocomplet'=>'off']) !!}
+            {!! Form::open(['route'=>'admin.colores.store','autocomplete'=>'off']) !!}
             {!! Form::hidden('user_id', auth()->user()->id) !!}
             <div class="form group">
-                {!! Form::label('color', 'color') !!}
+                {!! Form::label('color', 'Color') !!}
                 {!! Form::text('color', null, ['class'=>'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm','placeholder'=>'Ingresar Color']) !!}
                 @error('color')
                     <span class="text-danger">{{$message}}</span>

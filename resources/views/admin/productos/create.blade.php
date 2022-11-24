@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-body">
 
-            {!! Form::open(['route'=>'admin.productos.store','autocomplet'=>'off','files'=>'true']) !!}
+            {!! Form::open(['route'=>'admin.productos.store','autocomplete'=>'off','files'=>'true']) !!}
             {!! Form::hidden('user_id', auth()->user()->id) !!}
             @include('admin.productos.partials.forms')
 

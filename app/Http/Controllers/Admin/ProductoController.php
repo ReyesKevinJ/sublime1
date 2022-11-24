@@ -48,7 +48,7 @@ class ProductoController extends Controller
 
 
         $request->validate([
-            'nombre'=>'required|unique:productos',
+            'nombre'=>'required',
             'caracteristica'=>'required',
             'precio'=>'required',
             'descripcion'=>'required',

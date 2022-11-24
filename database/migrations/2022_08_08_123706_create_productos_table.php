@@ -20,13 +20,13 @@ return new class extends Migration
             $table->integer('precio');
             $table->text('descripcion');
             $table->timestamps();
-            $table->unsignedBigInteger('color_id')->onDelete('cascade');
-            $table->unsignedBigInteger('tamaño_id')->onDelete('cascade');
+            $table->unsignedBigInteger('color_id');
+            $table->unsignedBigInteger('tamaño_id');
 
             //referencias
 
-            $table->foreign('color_id')->references('id')->on('colors');
-            $table->foreign('tamaño_id')->references('id')->on('tamaños');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('tamaño_id')->references('id')->on('tamaños')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -55,7 +55,7 @@
                           <span aria-hidden="true" class="absolute inset-0"></span>
                           {{$producto->nombre}}
                         </h3>
-                        <p class="mt-1 text-sm text-gray-500">Black</p>
+                        <p class="mt-1 text-sm text-gray-500">{{$producto->color->color}}</p>
                     </div>
                     <p class="text-sm font-medium text-gray-900">${{$producto->precio}}</p>
                 </div>
