@@ -52,12 +52,13 @@
                     
                     <div class="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto">
                         <div>
-                            <p class="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">presupuesto</p>
+                            <p class="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">Subtotal</p>
+                            @foreach (Cart::content() as $item)
                             <div class="flex items-center justify-between pt-16">
-                                <p class="text-base leading-none text-gray-800 dark:text-white">Subtotal</p>
-                                <p class="text-base leading-none text-gray-800 dark:text-white">$ {{Cart::subtotal()}}</p>
+                                <p class="text-base leading-none text-gray-800 dark:text-white">{{$item->name}}</p>
+                                <p class="text-base leading-none text-gray-800 dark:text-white">${{number_format($item->price*$item->qty)}}</p>
                             </div>
-                  
+                            @endforeach
                             
                         </div>
                         <div>
@@ -65,7 +66,21 @@
                                 <p class="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
                                 <p class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">{{Cart::subtotal()}}</p>
                             </div>
-                      
+                            <div class="flex items-center justify-center lg:pt-5 pt-20">
+                            @auth    
+                            @if(Cart::subtotal()!==0)
+                                <a href="{{route('ConfirmarCarrito')}}" class="flex items-center justify-center rounded-md border text-white px-6 py-3 hover:bg-gray-50 hover:text-gray-900 ">Procesar Pedido</a>
+                                @else
+                                <a href="{{route('productos.index')}}" class="flex items-center justify-center rounded-md border text-white px-6 py-3 hover:bg-gray-50 hover:text-gray-900 ">Hacer un Pedido</a>
+                                @endif
+                            @else
+                            <a href="/login" class="flex items-center justify-center rounded-md border text-white px-6 py-3 hover:bg-gray-50 hover:text-gray-900 ">Iniciar Sesion</a>
+                            @endauth
+                        </div>
+                        <div class="mt-5">
+                        <a href="{{route('eliminarCarrito')}}" class="text-white hover:text-gray-400">Eliminar Carrito</a>
+                        <a href="{{route('productos.index')}}" class="ml-8 text-blue-500 hover:text-blue-200">Seguir Comprando</a>
+                        </div>
                         </div>
                     </div>
                 </div>
